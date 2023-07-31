@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css"
+    />
+
+    <script type="text/javascript">
+      const script = document.createElement("script");
+      script.setAttribute(
+        "data-sdk-integration-source",
+        "integrationbuilder_ac"
+      );
+      const client_id = "AeOZW0EhSJgibG0z7dmkj0JCggYBWCDQN8Ke6G1euUjflcSNMa1vJGxVAwftqJBT7EOa_GcVKatH54Re";
+      async function getToken() {
+        let token;
+        await fetch("/api/token", {
+          method: "post",
+        })
+          .then((res) => res.json())
+          .then((clientToken) => {
+            token = clientToken;
+          });
+        console.log(token);
+        return token;
+      }
+
+      async function getApp() {
+        script = document.createElement("script");
+        script.src = "./app.js";
+        document.body.appendChild(script);
+      }
+      async function test() {
+        const client_token = await getToken();
+        const script = document.createElement("script");
+        script.src =
+          "https://www.paypal.com/sdk/js?client-id=" +
+          client_id +
+          "&locale=en_US&vault=false&enable-funding=venmo&currency=USD&buyer-country=US&components=buttons,hosted-fields";
+        script.setAttribute("data-client-token", client_token);
+        document.head.appendChild(script);
+        script.onload = function () {
+          getApp();
+        };
+      }
+      test();
+    </script>
+  </head>
+  <body>
+    <div id="paypal-button-container" class="paypal-button-container"></div>
+    <div>
+      <p style="text-align: center">OR</p>
+    </div>
+    <div class="card_container">
+      <form id="card-form">
+        <div id="card-number" class="card_field"></div>
+        <div style="display: flex; flex-direction: row">
+          <div>
+            <div id="expiration-date" class="card_field"></div>
+          </div>
+          <div style="margin-left: 10px">
+            <div id="cvv" class="card_field" style="margin-left: 50px"></div>
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            id="card-holder-name"
+            name="card-holder-name"
+            autocomplete="off"
+            placeholder="Name on Card"
+            class="card-field"
+            style="font-family: helvetica; font-size: 14px"
+          />
+          <div>
+            <input
+              type="text"
+              id="card-billing-address-country"
+              name="card-billing-address-country"
+              autocomplete="off"
+              placeholder="Country Code"
+              style="font-family: helvetica; font-size: 14px"
+            />
+          </div>
+        </div>
+        <br /><br />
+        <button
+          value="submit"
+          id="submit"
+          class="btn"
+          style="width: 760px; height: 50px; background: #009c74; color: white"
+        >
+          PAY
+        </button>
+      </form>
+    </div>
+    <div id="threeds"></div>
+    <!--<script src="./app.js"></script> -->
+  </body>
+</html>
