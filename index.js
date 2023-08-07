@@ -4,7 +4,7 @@ const paypal = require('paypal-rest-sdk');
 const app = express();
 
 app.get('/', (req, res) => {
-  const payment = new paypal.Payment({
+  const payment = paypal.Payment({
     amount: 100,
     currency: 'USD',
     payer: {
