@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+    />
+
     <link rel="stylesheet" href="style.css" />
 
     <link rel="icon" href="topb_logo.ico" type="image/x-icon" />
@@ -12,6 +16,41 @@
     <script src="ASV.js"></script>
 
     <title>The One Page Bible</title>
+
+    <!-- zoom script -->
+    <style>
+      .zoom-control {
+        position: fixed;
+        left: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+
+      .zoom-control input {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+      .zoom-control input::-webkit-slider-thumb {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .zoom-control {
+          display: block;
+        }
+      }
+    </style>
   </head>
 
   <!-- <script>
@@ -23,6 +62,10 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/pinch-zoom@latest/dist/pinch-zoom.min.js"></script> -->
 
   <body>
+    <div class="zoom-control">
+      <input type="range" min="0" max="100" value="100" />
+    </div>
+
     <nav>
       <a class="navButt" href="about.html">About page</a>
 
@@ -83,11 +126,13 @@
           draggable="false"
           src="Assets\The One page bible.svg"
           alt="the one-page Bible logo"
-          width="600rm"
-          height="1000rm"
+          width="1000vw"
+          height="1000vh"
         />
 
-        <h1 id="version">Version: The King James Bible</h1>
+        <h1 id="version">
+          Version: Please select a version from the navigation
+        </h1>
 
         <div id="versionCont"></div>
 
@@ -104,13 +149,20 @@
               if (selectedVersion === "KJV") {
                 loadKJV();
                 addBookImages();
+                setVersionTitle();
               } else if (selectedVersion === "ASV") {
                 loadASV();
                 addBookImages();
+                setVersionTitle();
               } else {
                 // Handle other versions here
               }
             });
+
+          function setVersionTitle() {
+            document.getElementById("version").textContent =
+              "Version: " + document.getElementById("versionSelect").value;
+          }
 
           // Function to add images to book elements
           function addBookImages() {
