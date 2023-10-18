@@ -13,14 +13,6 @@ if (
 }
 
 const addStuffToContents = () => {
-  const bookElements = document.querySelectorAll('.books > [class^="book"]');
-  bookElements.forEach((bookElement) => {
-    const imgElement = document.createElement("img");
-    imgElement.src = "Assets/SVG/" + bookElement.id + ".svg";
-    imgElement.setAttribute("draggable", "false");
-    bookElement.appendChild(imgElement);
-  });
-
   // Check if the alert has been shown before
   if (!localStorage.getItem("alertShown")) {
     // If not shown, display the alert box

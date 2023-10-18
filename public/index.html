@@ -103,12 +103,27 @@
               var selectedVersion = this.value;
               if (selectedVersion === "KJV") {
                 loadKJV();
+                addBookImages();
               } else if (selectedVersion === "ASV") {
                 loadASV();
+                addBookImages();
               } else {
                 // Handle other versions here
               }
             });
+
+          // Function to add images to book elements
+          function addBookImages() {
+            const bookElements = document.querySelectorAll(
+              '.books > [class^="book"]'
+            );
+            bookElements.forEach((bookElement) => {
+              const imgElement = document.createElement("img");
+              imgElement.src = "Assets/SVG/" + bookElement.id + ".svg";
+              imgElement.setAttribute("draggable", "false");
+              bookElement.appendChild(imgElement);
+            });
+          }
 
           // Create an object to store the counts for each book
           var bookCounts = {};
