@@ -79,6 +79,10 @@ app-media-resized {
 
 }
 
+.book {
+  width: 200px;
+}
+
 
 #linkToZoomCode {
   margin: 10px;
