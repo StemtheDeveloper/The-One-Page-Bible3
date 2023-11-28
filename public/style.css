@@ -51,8 +51,8 @@ app-media-resized {
 
 .grid {
 	position: absolute;
-  width: auto;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
 	background-color: #fbffc9;
 	opacity: 100%;
 	overflow: hidden;

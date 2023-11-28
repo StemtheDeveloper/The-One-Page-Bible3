@@ -1,14 +1,16 @@
 {
   "name": "theonepagebible",
-  "version": "1.0.0",
   "description": "A simple web app that displays the entire Bible on one page.",
-  "main": "index.js",
+  "version": "1.0.0",
+  "main": "server/server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon server/server.js",
+    "format": "npx prettier --write **/*.{js,md}",
+    "format:check": "npx prettier --check **/*.{js,md}",
+    "lint": "npx eslint server/*.js --env=node && npx eslint client/*.js --env=browser"
   },
-  "author": "",
   "license": "Apache-2.0",
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -16,5 +18,8 @@
     "express": "^4.17.3",
     "firebase": "^10.5.0",
     "node-fetch": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
