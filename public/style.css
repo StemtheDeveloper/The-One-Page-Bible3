@@ -51,8 +51,8 @@ app-media-resized {
 
 .grid {
 	position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: auto;
 	background-color: #fbffc9;
 	opacity: 100%;
 	overflow: hidden;
@@ -80,7 +80,7 @@ app-media-resized {
 }
 
 .book {
-  width: 200px;
+  width: 800px;
 }
 
 
