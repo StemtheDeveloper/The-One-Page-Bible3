@@ -58,7 +58,7 @@ const mousemove = (event) => {
   update();
 };
 
-const mouseup = (event) => {
+const mouseup = () => {
   panningAllowed = false;
 };
 
@@ -87,6 +87,7 @@ const update = () => {
   const matrix = `matrix(${translate.scale}, 0, 0, ${translate.scale}, ${translate.translateX}, ${translate.translateY})`;
   contents.style.transform = matrix;
 };
+
 const touchstart = (event) => {
   initialContentsPos.x = translate.translateX;
   initialContentsPos.y = translate.translateY;
@@ -107,7 +108,7 @@ const touchmove = (event) => {
   update();
 };
 
-const touchend = (event) => {
+const touchend = () => {
   panningAllowed = false;
 };
 
@@ -171,7 +172,8 @@ let handle_click = (event) => {
 };
 document.addEventListener("click", handle_click);
 const paypal_sdk_url = "https://www.paypal.com/sdk/js";
-const client_id = "REPLACE_WITH_YOUR_CLIENT_ID";
+const client_id =
+  "AXFJHSKFb5a2AefvbtPZWIg8ZRd__FyJnxId3ha89j-KYWSdpPphd36X0QWhFU9KaqPO4pE927YOJNe9";
 const currency = "USD";
 const intent = "capture";
 let alerts = document.getElementById("alerts");
