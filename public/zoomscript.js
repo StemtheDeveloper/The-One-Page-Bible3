@@ -64,13 +64,13 @@ const mouseup = () => {
 
 const zoom = (event) => {
   if (
-    zoomFactor + event.deltaY / 5000 > 6 ||
-    zoomFactor + event.deltaY / 5000 < 0.01
+    zoomFactor + event.deltaY / 6000 > 6 ||
+    zoomFactor + event.deltaY / 6000 < 0.01
   ) {
     return;
   }
   const oldZoomFactor = zoomFactor;
-  zoomFactor += event.deltaY / 5000;
+  zoomFactor += event.deltaY / 6000;
   mousePosition.x = event.clientX - gridSize.x;
   mousePosition.y = event.clientY - gridSize.y;
   translate.scale = zoomFactor;
@@ -88,61 +88,7 @@ const update = () => {
   contents.style.transform = matrix;
 };
 
-const touchstart = (event) => {
-  initialContentsPos.x = translate.translateX;
-  initialContentsPos.y = translate.translateY;
-  pinnedMousePosition.x = event.touches[0].clientX;
-  pinnedMousePosition.y = event.touches[0].clientY;
-  panningAllowed = true;
-};
-
-const touchmove = (event) => {
-  mousePosition.x = event.touches[0].clientX;
-  mousePosition.y = event.touches[0].clientY;
-  if (panningAllowed) {
-    const diffX = mousePosition.x - pinnedMousePosition.x;
-    const diffY = mousePosition.y - pinnedMousePosition.y;
-    translate.translateX = initialContentsPos.x + diffX;
-    translate.translateY = initialContentsPos.y + diffY;
-  }
-  update();
-};
-
-const touchend = () => {
-  panningAllowed = false;
-};
-
-const disablePinchZoom = () => {
-  let lastTouchEnd = 0;
-  document.addEventListener(
-    "touchstart",
-    function (event) {
-      if (event.touches.length > 1) {
-        event.preventDefault();
-      }
-    },
-    { passive: false }
-  );
-  document.addEventListener(
-    "touchend",
-    function (event) {
-      const now = new Date().getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    },
-    false
-  );
-};
-
-// Call the disablePinchZoom function to disable pinch zoom on your website
-disablePinchZoom();
-
 addStuffToContents();
-grid.addEventListener("touchstart", touchstart);
-grid.addEventListener("touchmove", touchmove);
-grid.addEventListener("touchend", touchend);
 grid.addEventListener("wheel", zoom);
 grid.addEventListener("mousedown", mousedown);
 grid.addEventListener("mousemove", mousemove);
