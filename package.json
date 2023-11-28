@@ -1,7 +1,7 @@
 {
   "name": "theonepagebible",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple web app that displays the entire Bible on one page.",
   "main": "index.js",
   "type": "module",
   "scripts": {
