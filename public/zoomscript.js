@@ -1,17 +1,3 @@
-// const pinchZoom = new PinchZoom("#contents");
-// pinchZoom.disableMultiTouch = true;
-// pinchZoom.zoomTo(2);
-
-// Disable pinch zoom on iOS devices
-if (
-  navigator.userAgent.match(/iPad/i) ||
-  navigator.userAgent.match(/iPhone/i)
-) {
-  document.addEventListener("touchmove", function (event) {
-    event.preventDefault();
-  });
-}
-
 const addStuffToContents = () => {
   // Check if the alert has been shown before
   if (!localStorage.getItem("alertShown")) {
@@ -63,6 +49,9 @@ const mouseup = () => {
 };
 
 const zoom = (event) => {
+  // Prevent the default behavior of the mouse wheel (page scroll)
+  event.preventDefault();
+
   if (
     zoomFactor + event.deltaY / 6000 > 6 ||
     zoomFactor + event.deltaY / 6000 < 0.01
@@ -89,7 +78,7 @@ const update = () => {
 };
 
 addStuffToContents();
-grid.addEventListener("wheel", zoom);
-grid.addEventListener("mousedown", mousedown);
-grid.addEventListener("mousemove", mousemove);
-grid.addEventListener("mouseup", mouseup);
+contents.addEventListener("wheel", zoom);
+contents.addEventListener("mousedown", mousedown);
+contents.addEventListener("mousemove", mousemove);
+contents.addEventListener("mouseup", mouseup);

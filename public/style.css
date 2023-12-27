@@ -1,72 +1,82 @@
-
-
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
-ol, ul {list-style: none; margin: 0; padding: 0;}
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-blockquote, q {quotes: none;}
+blockquote,
+q {
+  quotes: none;
+}
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 
-    /* reset chrome useragent setting for blockqoute */
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
+  /* reset chrome useragent setting for blockqoute */
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
 }
 
 table {
-
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 /* end of reset */
-
 
 /* reset focus */
 
 :focus {
-    outline-style:none;
-    box-shadow:none;
-    border-color:transparent;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
 }
-
 
 /* universal polyfills for unknown html objects */
 
 main {
-    display: block;
+  display: block;
 }
 
 app-media-resized {
-    display: block;
-    position: relative;
+  display: block;
+  position: relative;
 }
 
 .grid {
-	position: absolute;
+  position: absolute;
   width: 100vw;
   height: 100vh;
-	background-color: #fbffc9;
-	opacity: 100%;
-	overflow: hidden;
+  background-color: #fbffc9;
+  overflow: hidden;
 }
 
 .grid .contents {
-	position: absolute;
+  position: absolute;
   transform-origin: 0 0;
 }
 
 .bookTitle {
   font-size: 90px;
   color: black;
-
 }
 
 .books {
@@ -76,13 +86,11 @@ app-media-resized {
   row-gap: 10px;
   gap: 50px;
   /* color: rgb(54, 54, 54); */
-
 }
 
 .book {
   width: 800px;
 }
-
 
 #linkToZoomCode {
   margin: 10px;
@@ -119,8 +127,7 @@ body {
 }
 
 nav {
-
-  background-color: #ffeb6a;;
+  background-color: #ffeb6a;
   width: 100vw;
   height: 60px;
   display: flex;
@@ -180,7 +187,6 @@ spacer {
   background-color: #fcf5bb;
   font-family: Arial, Helvetica, sans-serif;
   gap: 20px;
-
 }
 
 #highLabel {
@@ -189,15 +195,18 @@ spacer {
   margin-left: 20px;
 }
 
-#searchInput, #highlightColorPicker, #searchButton, #resetButton {
-
+#searchInput,
+#highlightColorPicker,
+#searchButton,
+#resetButton {
   border-radius: 5px;
   border: none;
   height: 30px;
 }
 
-#highlightColorPicker, #searchButton, #resetButton {
-
+#highlightColorPicker,
+#searchButton,
+#resetButton {
   background-color: antiquewhite;
 }
 
@@ -208,7 +217,6 @@ spacer {
 }
 
 #searchInput {
-
   width: 200px;
 }
 
@@ -247,7 +255,8 @@ spacer {
   padding: 10px;
 }
 
-h4, h5 {
+h4,
+h5 {
   color: #5b310f;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -296,7 +305,7 @@ h4, h5 {
 }
 
 .hide {
-  display:none !important;
+  display: none !important;
 }
 /* .spinner-container {
   width: 100px;
